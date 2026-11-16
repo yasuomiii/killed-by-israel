@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0e0f11">
+  <title>Gaza – Jeder Mensch zählt</title>
+  <meta name="description" content="Dokumentation der gemeldeten Opferzahlen im Gazastreifen seit dem 7. Oktober 2023 – mit live geladenen Daten und einer Visualisierung: eine Figur für jeden getöteten Menschen.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Sprachumschalter -->
+  <div class="lang" id="lang">
+    <button class="lang__btn" id="lang-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="lang-menu" aria-label="Sprache">
+      <span class="lang__code" id="lang-code">DE</span>
+      <svg class="lang__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <ul class="lang__menu" id="lang-menu" role="listbox" aria-label="Sprache" tabindex="-1"></ul>
+  </div>
+
+  <main class="hero" id="top">
+    <header class="hero__head reveal" style="--d:0ms">
+      <p class="eyebrow" data-i18n="eyebrow">Gazastreifen · seit dem 7. Oktober 2023</p>
+      <h1 class="title" data-i18n="headline">Hinter jeder Zahl steht ein Mensch.</h1>
+    </header>
+
+    <section class="stats" aria-label="Opferzahlen">
+      <article class="stat reveal" id="stat-children" style="--d:250ms">
+        <h2 class="stat__label"><span class="stat__by" data-i18n="byIsrael">von Israel</span><span data-i18n="labelChildren">Getötete Kinder</span></h2>
+        <p class="stat__num" data-num="children" aria-live="polite">–</p>
+        <button class="btn" type="button" data-mode="children" aria-expanded="false" aria-controls="viz" disabled>
+          <span class="btn__label" data-i18n="btnChildren">Getötete Kinder visualisiert</span>
+          <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </article>
+
+      <div class="stats__divider reveal" style="--d:350ms" aria-hidden="true"></div>
+
+      <article class="stat reveal" id="stat-total" style="--d:450ms">
+        <h2 class="stat__label"><span class="stat__by" data-i18n="byIsrael">von Israel</span><span data-i18n="labelTotal">Getötete Menschen insgesamt</span></h2>
+        <p class="stat__num" data-num="total" aria-live="polite">–</p>
+        <button class="btn" type="button" data-mode="total" aria-expanded="false" aria-controls="viz" disabled>
+          <span class="btn__label" data-i18n="btnTotal">Alle Opfer visualisiert</span>
+          <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </article>
+    </section>
+
+    <p class="status reveal" id="status" style="--d:650ms" role="status" data-i18n="loading">Daten werden geladen …</p>
+  </main>
+
+  <section class="viz" id="viz" aria-label="Visualisierung" hidden>
+    <div class="viz__clip">
+      <div class="viz__inner">
+        <div class="viz__bar">
+          <div class="viz__heading">
+            <h2 class="viz__title" id="viz-title">–</h2>
+            <p class="viz__sub" id="viz-sub">–</p>
+          </div>
+          <button class="btn btn--ghost" type="button" id="viz-close">
+            <span data-i18n="close">Schließen</span>
+          </button>
+        </div>
+
+        <div class="viz__stage" id="viz-stage">
+          <div class="viz__scroll" id="viz-scroll" tabindex="0" role="img" aria-label="Piktogramm-Raster">
+            <div class="viz__track" id="viz-track">
+              <canvas id="viz-canvas"></canvas>
+            </div>
+          </div>
+          <div class="viz__fade viz__fade--top" aria-hidden="true"></div>
+          <div class="viz__fade viz__fade--bottom" aria-hidden="true"></div>
+
+          <div class="zoom" id="viz-zoom" role="group" aria-label="Zoom">
+            <button class="zoom__step" id="zoom-out" type="button" aria-label="Herauszoomen">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            </button>
+            <input class="zoom__range" id="zoom-range" type="range" min="0" max="1000" step="1" value="1000" aria-label="Zoom">
+            <button class="zoom__step" id="zoom-in" type="button" aria-label="Hineinzoomen">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12M12 6v12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="viz__foot">
+          <p class="viz__range" id="viz-range" aria-live="off">–</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>
+      <span data-i18n="sourceLabel">Quelle:</span>
+      <a href="https://data.techforpalestine.org/docs/summary/" target="_blank" rel="noopener">Tech for Palestine</a>
+      <span data-i18n="sourceRest">· vom Gesundheitsministerium in Gaza gemeldete Zahlen.</span>
+    </p>
+    <p class="footer__small" data-i18n="footSmall">Gemeldete Zahlen; Vermisste und noch nicht identifizierte Tote sind darin nicht enthalten. Die Werte werden bei jedem Seitenaufruf neu geladen.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

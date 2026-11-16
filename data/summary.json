@@ -1,0 +1,11 @@
+{
+  "gaza": {
+    "last_update": "2026-11-15",
+    "killed": { "total": 74699, "children": 21976, "women": null }
+  },
+  "_meta": {
+    "source": "https://data.techforpalestine.org/api/v3/summary.json",
+    "note": "Schnappschuss der Summary-API (v3). Wird von der GitHub Action regelmäßig überschrieben.",
+    "fetched_at": "2026-11-16T19:00:00Z"
+  }
+}
