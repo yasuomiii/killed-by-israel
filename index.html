@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#0e0f11">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <title>Gaza – Jeder Mensch zählt</title>
   <meta name="description" content="Dokumentation der gemeldeten Opferzahlen im Gazastreifen seit dem 7. Oktober 2023 – mit live geladenen Daten und einer Visualisierung: eine Figur für jeden getöteten Menschen.">
   <link rel="stylesheet" href="style.css">
@@ -22,14 +24,26 @@
 
   <main class="hero" id="top">
     <header class="hero__head reveal" style="--d:0ms">
-      <p class="eyebrow" data-i18n="eyebrow">Gazastreifen · seit dem 7. Oktober 2023</p>
+      <p class="eyebrow" id="eyebrow">Gazastreifen · seit dem 7. Oktober 2023</p>
       <h1 class="title" data-i18n="headline">Hinter jeder Zahl steht ein Mensch.</h1>
     </header>
 
+    <nav class="regions" id="regions" aria-label="Region">
+      <button class="regions__item is-active" type="button" data-region="gaza" aria-current="true" disabled>
+        <span class="regions__label" data-i18n="regionGaza">Gaza</span><span class="regions__line" aria-hidden="true"></span>
+      </button>
+      <button class="regions__item" type="button" data-region="westbank" disabled>
+        <span class="regions__label" data-i18n="regionWestBank">Westjordanland</span><span class="regions__line" aria-hidden="true"></span>
+      </button>
+      <button class="regions__item" type="button" data-region="lebanon" disabled>
+        <span class="regions__label" data-i18n="regionLebanon">Libanon</span><span class="regions__line" aria-hidden="true"></span>
+      </button>
+    </nav>
+
     <section class="stats" aria-label="Opferzahlen">
-      <article class="stat reveal" id="stat-children" style="--d:250ms">
-        <h2 class="stat__label"><span class="stat__by" data-i18n="byIsrael">von Israel</span><span data-i18n="labelChildren">Getötete Kinder</span></h2>
-        <p class="stat__num" data-num="children" aria-live="polite">–</p>
+      <article class="stat reveal" data-slot="left" style="--d:250ms">
+        <h2 class="stat__label"><span class="stat__by" data-i18n="byIsrael">von Israel</span><span class="stat__kind" data-i18n="labelChildren">Getötete Kinder</span></h2>
+        <p class="stat__num" data-num="left" aria-live="polite">–</p>
         <button class="btn" type="button" data-mode="children" aria-expanded="false" aria-controls="viz" disabled>
           <span class="btn__label" data-i18n="btnChildren">Getötete Kinder visualisiert</span>
           <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -38,9 +52,9 @@
 
       <div class="stats__divider reveal" style="--d:350ms" aria-hidden="true"></div>
 
-      <article class="stat reveal" id="stat-total" style="--d:450ms">
-        <h2 class="stat__label"><span class="stat__by" data-i18n="byIsrael">von Israel</span><span data-i18n="labelTotal">Getötete Menschen insgesamt</span></h2>
-        <p class="stat__num" data-num="total" aria-live="polite">–</p>
+      <article class="stat reveal" data-slot="right" style="--d:450ms">
+        <h2 class="stat__label"><span class="stat__by" data-i18n="byIsrael">von Israel</span><span class="stat__kind" data-i18n="labelTotal">Getötete Menschen insgesamt</span></h2>
+        <p class="stat__num" data-num="right" aria-live="polite">–</p>
         <button class="btn" type="button" data-mode="total" aria-expanded="false" aria-controls="viz" disabled>
           <span class="btn__label" data-i18n="btnTotal">Alle Opfer visualisiert</span>
           <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>

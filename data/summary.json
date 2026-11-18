@@ -1,11 +1,35 @@
 {
   "gaza": {
-    "last_update": "2026-11-15",
-    "killed": { "total": 74699, "children": 21976, "women": null }
+    "last_update": "2026-11-16",
+    "killed": {
+      "total": 74702,
+      "children": 21976
+    },
+    "injured": {
+      "total": 176105
+    }
+  },
+  "west_bank": {
+    "last_update": "2026-11-16",
+    "killed": {
+      "total": 1129
+    },
+    "injured": {
+      "total": 12356
+    }
+  },
+  "lebanon": {
+    "last_update": "2026-11-05",
+    "killed": {
+      "total": 8437
+    },
+    "injured": {
+      "total": 29067
+    }
   },
   "_meta": {
     "source": "https://data.techforpalestine.org/api/v3/summary.json",
-    "note": "Schnappschuss der Summary-API (v3). Wird von der GitHub Action regelmäßig überschrieben.",
-    "fetched_at": "2026-11-16T19:00:00Z"
+    "note": "Snapshot of the Summary API (v3). Overwritten regularly by the GitHub Action.",
+    "fetched_at": "2026-11-18T12:00:00Z"
   }
 }

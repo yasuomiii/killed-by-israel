@@ -51,6 +51,7 @@ a:hover { text-decoration-color: var(--ink); }
 
 /* ───────── Hero ───────── */
 .hero {
+  position: relative;
   min-height: 100vh;
   min-height: 100svh;
   display: flex;
@@ -80,6 +81,59 @@ a:hover { text-decoration-color: var(--ink); }
   line-height: 1.4;
   color: var(--ink-dim);
   letter-spacing: .01em;
+}
+
+/* Reihenfolge im Hero (Region-Auswahl sitzt zwischen Titel und Zahlen) */
+.hero__head { order: 0; } .regions { order: 1; } .stats { order: 2; } .status { order: 3; }
+
+/* Sanftes Überblenden beim Wechsel der Region */
+.stats, .eyebrow { transition: opacity .45s var(--ease), transform .6s var(--ease); }
+.region-swap .stats, .region-swap .eyebrow { opacity: 0; transform: translateY(10px); }
+
+/* ───────── Region-Auswahl ───────── */
+.regions {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: .2rem clamp(1.4rem, 6vw, 2.6rem);
+  direction: ltr;
+  opacity: 0;
+  animation: fadeOnly 1.4s var(--ease) 800ms forwards;
+}
+@keyframes fadeOnly { to { opacity: 1; } }
+
+.regions__item {
+  appearance: none; background: none; border: 0;
+  display: flex; flex-direction: column; align-items: stretch; gap: .45rem;
+  min-height: 44px; padding: .6rem .15rem .4rem;
+  color: var(--ink-faint);
+  font: 500 .78rem/1.2 var(--sans);
+  letter-spacing: .18em; text-transform: uppercase;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color .5s var(--ease), opacity .5s var(--ease);
+}
+.regions__item:hover:not(:disabled), .regions__item:focus-visible { color: var(--ink); outline: none; }
+.regions__item.is-active { color: var(--ink); }
+.regions__item:disabled:not(.is-active) { opacity: .35; cursor: default; }
+.regions__item[hidden] { display: none; }
+.regions__item:focus-visible .regions__label { text-shadow: 0 0 14px rgba(222, 218, 209, .5); }
+.regions__line {
+  display: block; height: 1px; width: 0; margin: 0 auto;
+  background: currentColor;
+  transition: width .8s var(--ease), opacity .5s var(--ease);
+}
+.regions__item.is-active .regions__line { width: 100%; }
+:lang(ar) .regions__item, :lang(zh) .regions__item { letter-spacing: .04em; text-transform: none; }
+
+/* Breite Bildschirme: senkrechte Leiste am rechten Rand */
+@media (min-width: 1540px) {
+  .regions {
+    position: absolute; right: clamp(1.5rem, 3vw, 3rem); top: 50%;
+    transform: translateY(-50%);
+    flex-direction: column; flex-wrap: nowrap; align-items: flex-end; gap: .2rem;
+  }
+  .regions__item { flex-direction: row; align-items: center; gap: .85rem; padding: .5rem 0; }
+  .regions__line { width: 10px; margin: 0; opacity: .5; }
+  .regions__item.is-active .regions__line { width: 32px; opacity: 1; }
 }
 
 /* ───────── Hauptkennzahlen ───────── */

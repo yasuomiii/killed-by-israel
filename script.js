@@ -34,8 +34,22 @@
       docTitle: 'Gaza – Jeder Mensch zählt',
       metaDesc: 'Dokumentation der gemeldeten Opferzahlen im Gazastreifen seit dem 7. Oktober 2023 – mit live geladenen Daten und einer Visualisierung: eine Figur für jeden getöteten Menschen.',
       langLabel: 'Sprache',
-      eyebrow: 'Gazastreifen · seit dem 7. Oktober 2023',
       headline: 'Hinter jeder Zahl steht ein Mensch.',
+      eyebrowTpl: '{region} · seit dem {date}',
+      regionsLabel: 'Region',
+      regionGaza: 'Gaza',
+      regionGazaLong: 'Gazastreifen',
+      regionWestBank: 'Westjordanland',
+      regionLebanon: 'Libanon',
+      labelKilled: 'Getötete Menschen',
+      labelInjured: 'Verletzte',
+      btnKilled: 'Getötete Menschen visualisiert',
+      btnInjured: 'Verletzte visualisiert',
+      vizTitleInjured: '{n} Verletzte',
+      vizSubInjured: 'Eine Figur für jeden Verletzten.',
+      rangeInjured: 'Verletzte {a}–{b} von {n}',
+      rangeAllInjured: 'Alle {n} Verletzten',
+      gridAriaInjured: 'Raster mit {n} Figuren – eine für jeden Verletzten.',
       labelChildren: 'Getötete Kinder',
       labelTotal: 'Getötete Menschen insgesamt',
       byIsrael: 'von [[Israel]]',
@@ -68,8 +82,22 @@
       docTitle: 'Gaza – Every Life Counts',
       metaDesc: 'Documentation of the reported casualty figures in the Gaza Strip since 7 October 2023 – with live-loaded data and a visualisation: one figure for every person killed.',
       langLabel: 'Language',
-      eyebrow: 'Gaza Strip · since 7 October 2023',
       headline: 'Behind every number is a human being.',
+      eyebrowTpl: '{region} · since {date}',
+      regionsLabel: 'Region',
+      regionGaza: 'Gaza',
+      regionGazaLong: 'Gaza Strip',
+      regionWestBank: 'West Bank',
+      regionLebanon: 'Lebanon',
+      labelKilled: 'People killed',
+      labelInjured: 'People injured',
+      btnKilled: 'People killed, visualised',
+      btnInjured: 'People injured, visualised',
+      vizTitleInjured: '{n} people injured',
+      vizSubInjured: 'One figure for every injured person.',
+      rangeInjured: 'People injured {a}–{b} of {n}',
+      rangeAllInjured: 'All {n} people injured',
+      gridAriaInjured: 'Grid of {n} figures, one for each person injured.',
       labelChildren: 'Children killed',
       labelTotal: 'Total people killed',
       byIsrael: 'by [[Israel]]',
@@ -102,8 +130,22 @@
       docTitle: 'غزة – كل إنسان يُحتسب',
       metaDesc: 'توثيق لأعداد الضحايا المُعلَن عنها في قطاع غزة منذ 7 أكتوبر 2023 – ببيانات تُحمَّل مباشرة وتصوّر بصري: شكل واحد لكل إنسان قُتل.',
       langLabel: 'اللغة',
-      eyebrow: 'قطاع غزة · منذ 7 أكتوبر 2023',
       headline: 'خلف كل رقم إنسان.',
+      eyebrowTpl: '{region} · منذ {date}',
+      regionsLabel: 'المنطقة',
+      regionGaza: 'غزة',
+      regionGazaLong: 'قطاع غزة',
+      regionWestBank: 'الضفة الغربية',
+      regionLebanon: 'لبنان',
+      labelKilled: 'القتلى',
+      labelInjured: 'الجرحى',
+      btnKilled: 'القتلى مُجسَّدون بصريًا',
+      btnInjured: 'الجرحى مُجسَّدون بصريًا',
+      vizTitleInjured: '{n} من الجرحى',
+      vizSubInjured: 'شكل واحد لكل جريح.',
+      rangeInjured: 'الجرحى {a}–{b} من {n}',
+      rangeAllInjured: 'جميع الجرحى ({n})',
+      gridAriaInjured: 'شبكة من {n} شكلًا، واحد لكل جريح.',
       labelChildren: 'الأطفال القتلى',
       labelTotal: 'إجمالي القتلى',
       byIsrael: 'على يد [[إسرائيل]]',
@@ -136,8 +178,22 @@
       docTitle: 'Gaza – Cada vida cuenta',
       metaDesc: 'Documentación de las cifras de víctimas comunicadas en la Franja de Gaza desde el 7 de octubre de 2023, con datos cargados en directo y una visualización: una figura por cada persona fallecida.',
       langLabel: 'Idioma',
-      eyebrow: 'Franja de Gaza · desde el 7 de octubre de 2023',
       headline: 'Detrás de cada cifra hay una persona.',
+      eyebrowTpl: '{region} · desde el {date}',
+      regionsLabel: 'Región',
+      regionGaza: 'Gaza',
+      regionGazaLong: 'Franja de Gaza',
+      regionWestBank: 'Cisjordania',
+      regionLebanon: 'Líbano',
+      labelKilled: 'Personas muertas',
+      labelInjured: 'Personas heridas',
+      btnKilled: 'Personas muertas, visualizadas',
+      btnInjured: 'Personas heridas, visualizadas',
+      vizTitleInjured: '{n} personas heridas',
+      vizSubInjured: 'Una figura por cada persona herida.',
+      rangeInjured: 'Personas heridas {a}–{b} de {n}',
+      rangeAllInjured: 'Las {n} personas heridas',
+      gridAriaInjured: 'Cuadrícula de {n} figuras, una por cada persona herida.',
       labelChildren: 'Niños muertos',
       labelTotal: 'Total de personas muertas',
       byIsrael: 'por [[Israel]]',
@@ -170,8 +226,22 @@
       docTitle: 'Gaza – Chaque vie compte',
       metaDesc: 'Documentation des chiffres de victimes déclarés dans la bande de Gaza depuis le 7 octobre 2023, avec des données chargées en direct et une visualisation : une figure pour chaque personne tuée.',
       langLabel: 'Langue',
-      eyebrow: 'Bande de Gaza · depuis le 7 octobre 2023',
       headline: 'Derrière chaque chiffre se trouve un être humain.',
+      eyebrowTpl: '{region} · depuis le {date}',
+      regionsLabel: 'Région',
+      regionGaza: 'Gaza',
+      regionGazaLong: 'Bande de Gaza',
+      regionWestBank: 'Cisjordanie',
+      regionLebanon: 'Liban',
+      labelKilled: 'Personnes tuées',
+      labelInjured: 'Personnes blessées',
+      btnKilled: 'Personnes tuées, visualisées',
+      btnInjured: 'Personnes blessées, visualisées',
+      vizTitleInjured: '{n} personnes blessées',
+      vizSubInjured: 'Une figure pour chaque personne blessée.',
+      rangeInjured: 'Personnes blessées {a}–{b} sur {n}',
+      rangeAllInjured: 'Les {n} personnes blessées',
+      gridAriaInjured: 'Grille de {n} figures, une pour chaque personne blessée.',
       labelChildren: 'Enfants tués',
       labelTotal: 'Total des personnes tuées',
       byIsrael: 'par [[Israël]]',
@@ -204,8 +274,22 @@
       docTitle: 'Gazze – Her can önemlidir',
       metaDesc: '7 Ekim 2023’ten bu yana Gazze Şeridi’nde bildirilen can kaybı rakamlarının belgelenmesi – canlı yüklenen veriler ve bir görselleştirme: öldürülen her insan için bir figür.',
       langLabel: 'Dil',
-      eyebrow: 'Gazze Şeridi · 7 Ekim 2023’ten beri',
       headline: 'Her rakamın ardında bir insan var.',
+      eyebrowTpl: '{region} · {date}’ten beri',
+      regionsLabel: 'Bölge',
+      regionGaza: 'Gazze',
+      regionGazaLong: 'Gazze Şeridi',
+      regionWestBank: 'Batı Şeria',
+      regionLebanon: 'Lübnan',
+      labelKilled: 'Öldürülen kişiler',
+      labelInjured: 'Yaralanan kişiler',
+      btnKilled: 'Öldürülen kişiler görselleştirildi',
+      btnInjured: 'Yaralananlar görselleştirildi',
+      vizTitleInjured: '{n} kişi yaralandı',
+      vizSubInjured: 'Her yaralı için bir figür.',
+      rangeInjured: 'Yaralananlar {a}–{b} / {n}',
+      rangeAllInjured: 'Yaralanan {n} kişinin tamamı',
+      gridAriaInjured: '{n} figürlük ızgara; yaralanan her kişi için bir figür.',
       labelChildren: 'Öldürülen çocuklar',
       labelTotal: 'Öldürülen toplam kişi',
       byIsrael: '[[İsrail]] tarafından',
@@ -238,8 +322,22 @@
       docTitle: 'Газа – Каждая жизнь важна',
       metaDesc: 'Документация по сообщённым данным о жертвах в секторе Газа с 7 октября 2023 года – с актуальными данными и визуализацией: одна фигурка на каждого погибшего.',
       langLabel: 'Язык',
-      eyebrow: 'Сектор Газа · с 7 октября 2023 года',
       headline: 'За каждой цифрой стоит человек.',
+      eyebrowTpl: '{region} · с {date}',
+      regionsLabel: 'Регион',
+      regionGaza: 'Газа',
+      regionGazaLong: 'Сектор Газа',
+      regionWestBank: 'Западный берег',
+      regionLebanon: 'Ливан',
+      labelKilled: 'Убитые',
+      labelInjured: 'Раненые',
+      btnKilled: 'Убитые — визуализированы',
+      btnInjured: 'Раненые — визуализированы',
+      vizTitleInjured: '{n} раненых',
+      vizSubInjured: 'Одна фигурка — на каждого раненого.',
+      rangeInjured: 'Раненые {a}–{b} из {n}',
+      rangeAllInjured: 'Все {n} раненых',
+      gridAriaInjured: 'Сетка из {n} фигурок — по одной на каждого раненого.',
       labelChildren: 'Убитые дети',
       labelTotal: 'Всего убитых',
       byIsrael: '[[Израилем]]',
@@ -272,8 +370,22 @@
       docTitle: '加沙——每一个生命都重要',
       metaDesc: '记录自2023年10月7日以来加沙地带已公布的遇难人数——实时加载数据，并以图示呈现：每一位遇难者对应一个人形。',
       langLabel: '语言',
-      eyebrow: '加沙地带 · 自2023年10月7日起',
       headline: '每一个数字背后，都是一个人。',
+      eyebrowTpl: '{region} · 自{date}起',
+      regionsLabel: '地区',
+      regionGaza: '加沙',
+      regionGazaLong: '加沙地带',
+      regionWestBank: '约旦河西岸',
+      regionLebanon: '黎巴嫩',
+      labelKilled: '遇难者',
+      labelInjured: '受伤者',
+      btnKilled: '遇难者已可视化',
+      btnInjured: '受伤者已可视化',
+      vizTitleInjured: '{n} 人受伤',
+      vizSubInjured: '每名伤者对应一个人形。',
+      rangeInjured: '伤者 {a}–{b}，共 {n}',
+      rangeAllInjured: '全部 {n} 名伤者',
+      gridAriaInjured: '共 {n} 个人形的网格，每名伤者一个。',
       labelChildren: '遇难儿童',
       labelTotal: '遇难者总数',
       byIsrael: '[[以色列]]造成的',
@@ -314,15 +426,36 @@
     return s;
   }
 
+  /* ───────────── Kennzahlen & Regionen ───────────── */
+  const STATS = {
+    children: { label: 'labelChildren', btn: 'btnChildren', title: 'vizTitleChildren', sub: 'vizSubChildren', range: 'rangeChildren', all: 'rangeAllChildren', aria: 'gridAriaChildren', kinds: ['boy', 'girl'],   adult: false },
+    total:    { label: 'labelTotal',    btn: 'btnTotal',    title: 'vizTitleTotal',    sub: 'vizSubTotal',    range: 'rangeTotal',    all: 'rangeAllTotal',    aria: 'gridAriaTotal',    kinds: ['man', 'woman'],   adult: true },
+    killed:   { label: 'labelKilled',   btn: 'btnKilled',   title: 'vizTitleTotal',    sub: 'vizSubTotal',    range: 'rangeTotal',    all: 'rangeAllTotal',    aria: 'gridAriaTotal',    kinds: ['man', 'woman'],   adult: true },
+    injured:  { label: 'labelInjured',  btn: 'btnInjured',  title: 'vizTitleInjured',  sub: 'vizSubInjured',  range: 'rangeInjured',  all: 'rangeAllInjured',  aria: 'gridAriaInjured',  kinds: ['man', 'woman'],   adult: true },
+  };
+  // start = Beginn der Zählung (laut Dokumentation der Quelle); stats = linke und rechte Kennzahl
+  const REGIONS = {
+    gaza:     { name: 'regionGazaLong', start: '2023-10-07', stats: ['children', 'total'] },
+    westbank: { name: 'regionWestBank', start: '2023-10-07', stats: ['killed', 'injured'] },
+    lebanon:  { name: 'regionLebanon',  start: '2023-10-08', stats: ['killed', 'injured'] },
+  };
+
   /* ───────────── Daten laden ───────────── */
+  const num = x => { const n = Number(x); return Number.isFinite(n) && n >= 0 ? Math.round(n) : null; };
+
   function parseSummary(json) {
     const g = json && json.gaza;
-    const total = Number(g && g.killed && g.killed.total);
-    const children = Number(g && g.killed && g.killed.children);
-    if (!Number.isFinite(total) || !Number.isFinite(children) || total <= 0 || children < 0 || children > total) {
-      throw new Error('Unerwartetes Datenformat');
-    }
-    return { total: Math.round(total), children: Math.round(children), date: g.last_update || null };
+    const total = num(g && g.killed && g.killed.total);
+    const children = num(g && g.killed && g.killed.children);
+    if (total === null || children === null || total <= 0 || children > total) throw new Error('Unerwartetes Datenformat');
+    const data = { gaza: { total, children, date: g.last_update || null } };
+    [['westbank', 'west_bank'], ['lebanon', 'lebanon']].forEach(([key, src]) => {
+      const r = json[src];
+      const killed = num(r && r.killed && r.killed.total);
+      const injured = num(r && r.injured && r.injured.total);
+      if (killed !== null && injured !== null) data[key] = { killed, injured, date: r.last_update || null };
+    });
+    return data;
   }
 
   async function fetchJson(url) {
@@ -348,11 +481,18 @@
     throw new Error('Keine Datenquelle erreichbar');
   }
 
-  /* ───────────── Zahlen & Status ───────────── */
-  const numEls = { total: $('[data-num="total"]'), children: $('[data-num="children"]') };
+  /* ───────────── Zahlen, Status & Region ───────────── */
+  const slots = $$('.stat').map(el => ({
+    el, key: el.dataset.slot, statKey: null,
+    num: $('.stat__num', el), btn: $('.btn', el), kind: $('.stat__kind', el),
+  }));
   const statusEl = $('#status');
-  const counting = { total: false, children: false };
+  const eyebrowEl = $('#eyebrow');
+  const regionsNav = $('#regions');
+  const regionItems = $$('.regions__item', regionsNav);
+  const counting = { left: false, right: false };
   let DATA = null;
+  let R = 'gaza';                      // aktuelle Region
   let statusMode = 'loading';          // 'loading' | 'ready' | 'error'
 
   function formatDate(iso) {
@@ -363,17 +503,19 @@
 
   const easeOutExpo = x => (x >= 1 ? 1 : 1 - Math.pow(2, -10 * x));
 
-  function countUp(key, to, delay = 0) {
-    const el = numEls[key];
+  function countUp(slot, to, delay = 0) {
+    const el = slot.num;
     el.setAttribute('aria-label', nf.format(to));
     if (REDUCED) { el.textContent = nf.format(to); return; }
-    counting[key] = true;
+    const run = ++slot.run || (slot.run = 1);
+    counting[slot.key] = true;
     el.textContent = nf.format(0);
     const start = performance.now() + delay;
     function frame(now) {
+      if (slot.run !== run) return;                       // von einer neueren Animation abgelöst
       const x = Math.min(1, Math.max(0, (now - start) / COUNT_UP_MS));
       el.textContent = nf.format(Math.round(to * easeOutExpo(x)));
-      if (x < 1) requestAnimationFrame(frame); else counting[key] = false;
+      if (x < 1) requestAnimationFrame(frame); else counting[slot.key] = false;
     }
     requestAnimationFrame(frame);
   }
@@ -392,10 +534,53 @@
       retry.addEventListener('click', init);
       statusEl.appendChild(retry);
     } else {
-      const d = formatDate(DATA.date);
-      statusEl.textContent = d ? t('stand') + ': ' + d : ' ';
+      const d = formatDate(DATA[R].date);
+      statusEl.textContent = d ? t('stand') + ': ' + d : '\u00a0';
     }
   }
+
+  /* Überschrift („Region · seit …“), Beschriftungen, Buttons, Zahlen und Stand passend zur Region */
+  function renderRegion(count, delay = 500) {
+    const reg = REGIONS[R];
+    eyebrowEl.textContent = t('eyebrowTpl', { region: t(reg.name), date: formatDate(reg.start) });
+    slots.forEach((s, i) => {
+      s.statKey = reg.stats[i];
+      s.btn.dataset.mode = s.statKey;
+      s.kind.dataset.i18n = STATS[s.statKey].label;
+      s.kind.textContent = t(STATS[s.statKey].label);
+    });
+    regionItems.forEach(it => {
+      const on = it.dataset.region === R;
+      it.classList.toggle('is-active', on);
+      if (on) it.setAttribute('aria-current', 'true'); else it.removeAttribute('aria-current');
+    });
+    updateButtons();
+    renderStatus();
+    if (!DATA) return;
+    slots.forEach((s, i) => {
+      const v = DATA[R][s.statKey];
+      if (count) countUp(s, v, delay + i * 250);
+      else if (!counting[s.key]) { s.num.textContent = nf.format(v); s.num.setAttribute('aria-label', nf.format(v)); }
+    });
+  }
+
+  let swapping = false;
+  async function switchRegion(next) {
+    if (swapping || !DATA || !DATA[next] || next === R) return;
+    swapping = true;
+    try {
+      if (viz.classList.contains('is-open')) await close();   // geöffnete Visualisierung zuerst schließen
+      document.body.classList.add('region-swap');
+      await wait(REDUCED ? 0 : 420);
+      R = next;
+      try { history.replaceState(null, '', '#' + R); } catch (e) { /* ignorieren */ }
+      renderRegion(true, 150);
+      document.body.classList.remove('region-swap');
+    } finally { swapping = false; }
+  }
+
+  regionItems.forEach(it => it.addEventListener('click', () => switchRegion(it.dataset.region)));
+  window.addEventListener('hashchange', () => { const h = location.hash.slice(1); if (REGIONS[h]) switchRegion(h); });
 
   async function init() {
     statusMode = 'loading';
@@ -408,11 +593,12 @@
       renderStatus();
       return;
     }
+    const h = location.hash.slice(1);
+    if (REGIONS[h] && DATA[h]) R = h;
+    regionItems.forEach(it => { it.disabled = !DATA[it.dataset.region]; it.hidden = !DATA[it.dataset.region]; });
     statusMode = 'ready';
-    renderStatus();
-    countUp('children', DATA.children, 500);
-    countUp('total', DATA.total, 750);
-    $$('.btn[data-mode]').forEach(b => { b.disabled = false; });
+    renderRegion(true);
+    slots.forEach(s => { s.btn.disabled = false; });
   }
 
   /* ───────────── Piktogramme (Vektor, im Code gezeichnet) ───────────── */
@@ -512,10 +698,7 @@
   const zoomInBtn = $('#zoom-in');
   const zoomOutBtn = $('#zoom-out');
 
-  const MODES = {
-    total:    { kinds: ['man', 'woman'], adult: true,  title: 'vizTitleTotal',    sub: 'vizSubTotal',    range: 'rangeTotal',    all: 'rangeAllTotal',    aria: 'gridAriaTotal' },
-    children: { kinds: ['boy', 'girl'],  adult: false, title: 'vizTitleChildren', sub: 'vizSubChildren', range: 'rangeChildren', all: 'rangeAllChildren', aria: 'gridAriaChildren' },
-  };
+  const MODES = STATS;
 
   const V = {
     mode: null, total: 0,
@@ -741,6 +924,7 @@
   function draw(now) {
     V.raf = 0;
     if (!V.mode || !V.L) return;
+    if (V.hold) { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, canvas.width, canvas.height); return; }
     const L = V.L;
     const top = scroller.scrollTop;
     const r0 = Math.max(0, Math.floor((top - V.contentTop) / L.ch));
@@ -909,8 +1093,8 @@
     buttons.forEach(b => {
       const on = b.dataset.mode === activeMode;
       b.setAttribute('aria-expanded', String(on));
-      $('.btn__label', b).textContent = on ? t('btnClose') : t(b.dataset.mode === 'children' ? 'btnChildren' : 'btnTotal');
-      $('#stat-' + b.dataset.mode).classList.toggle('is-active', on);
+      $('.btn__label', b).textContent = on ? t('btnClose') : t(STATS[b.dataset.mode].btn);
+      b.closest('.stat').classList.toggle('is-active', on);
     });
   }
 
@@ -928,7 +1112,7 @@
   function applyMode(mode) {
     cancelAnimationFrame(V.zraf); V.zraf = 0;
     V.mode = mode;
-    V.total = DATA[mode];
+    V.total = DATA[R][mode];
     V.lastRange = '';
     V.sprites.clear();
     scroller.scrollTop = 0;
@@ -950,15 +1134,17 @@
       } else {
         viz.hidden = false;
         activeMode = mode; updateButtons();
+        V.hold = true;                            // noch nichts zeichnen, bis das Panel fertig offen ist
         applyMode(mode);
         void viz.offsetHeight;                    // Reflow, damit die Transition startet
         viz.classList.add('is-open');
         await wait(REDUCED ? 0 : 350);
         viz.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'start' });
         await wait(REDUCED ? 0 : 750);
-        layout(false, true);
+        V.hold = false;
+        layout(false, true);                      // einmalige Einblendung bei finaler Größe
       }
-    } finally { busy = false; }
+    } finally { V.hold = false; busy = false; }
   }
 
   async function close() {
@@ -1059,14 +1245,8 @@
     langMenu.setAttribute('aria-label', t('langLabel'));
     langItems.forEach(i => i.setAttribute('aria-selected', String(i.dataset.code === L.code)));
 
-    renderStatus();
-    updateButtons();
-    if (DATA) {
-      ['children', 'total'].forEach(k => {
-        if (!counting[k]) numEls[k].textContent = nf.format(DATA[k]);
-        numEls[k].setAttribute('aria-label', nf.format(DATA[k]));
-      });
-    }
+    regionsNav.setAttribute('aria-label', t('regionsLabel'));
+    renderRegion(false);
     updateVizTexts();
   }
 
