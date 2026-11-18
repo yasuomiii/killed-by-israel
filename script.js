@@ -564,6 +564,71 @@
     });
   }
 
+  /* Scroll-Modus: Auf breiten Bildschirmen bleibt der Hero stehen und Scrollen wechselt die Region.
+     Zum Abschalten (dann Region-Auswahl wie auf dem Handy) einfach auf false setzen. */
+  const SCROLL_REGIONS = true;
+  const heroTrack = $('#hero-track');
+  const heroEl = $('.hero');
+  const wideMQ = window.matchMedia('(min-width: 1540px)');
+  const scrollMode = () => SCROLL_REGIONS && wideMQ.matches;
+  const regionOrder = () => regionItems.filter(it => !it.hidden).map(it => it.dataset.region);
+  const stepPx = () => {
+    const n = regionOrder().length;
+    return n > 1 ? (heroTrack.offsetHeight - heroEl.offsetHeight) / (n - 1) : 0;
+  };
+  const posOf = name => Math.max(0, regionOrder().indexOf(name)) * stepPx();
+
+  function setupScrollMode() {
+    const on = scrollMode();
+    document.documentElement.classList.toggle('scroll-regions', on);
+    const n = regionOrder().length;
+    document.documentElement.style.setProperty('--steps', Math.max(0, n - 1));
+    $$('.hero-track__snap').forEach((el, i) => { el.hidden = i >= n; });
+    if (on && DATA && window.scrollY < heroTrack.offsetHeight) window.scrollTo({ top: posOf(R), behavior: 'auto' });
+  }
+  wideMQ.addEventListener('change', setupScrollMode);
+
+  let scrollTick = 0, regionHoldUntil = 0;
+  // Während eines programmgesteuerten Scrolls (Klick, Schließen) keine Zwischen-Regionen anzeigen
+  function holdRegionScroll(ms = 1100) {
+    regionHoldUntil = performance.now() + ms;
+    setTimeout(onScrollRegions, ms + 30);
+  }
+  function onScrollRegions() {
+    scrollTick = 0;
+    if (!scrollMode() || !DATA || swapping || viz.classList.contains('is-open')) return;
+    if (document.documentElement.classList.contains('viz-open')) return;     // Visualisierung offen oder wird gerade geschlossen
+    if (performance.now() < regionHoldUntil) return;
+    if (heroTrack.getBoundingClientRect().bottom < window.innerHeight * 0.5) return;   // Hero nicht mehr im Blick
+    const order = regionOrder(), step = stepPx();
+    if (order.length < 2 || step <= 0) return;
+    const idx = Math.min(order.length - 1, Math.max(0, Math.round(window.scrollY / step)));
+    if (order[idx] !== R) switchRegion(order[idx]);
+  }
+  window.addEventListener('scroll', () => { if (!scrollTick) scrollTick = requestAnimationFrame(onScrollRegions); }, { passive: true });
+
+  /* Seitenweises Scrollen im Scroll-Modus: ein Scroll-Schritt = eine Region; nach der letzten Region
+     folgt als zweiter Schritt das Seitenende mit den Quellen. Mit offener Visualisierung ist frei scrollbar. */
+  let lastWheel = 0, lockUntil = 0;
+  window.addEventListener('wheel', e => {
+    if (!scrollMode() || !DATA || e.ctrlKey || e.metaKey || viz.classList.contains('is-open')) return;
+    if (e.target.closest && e.target.closest('.lang__menu')) return;
+    const stops = regionOrder().map(posOf).concat(document.documentElement.scrollHeight - window.innerHeight);
+    const y = window.scrollY;
+    if (y > stops[stops.length - 1] + 2 && e.deltaY > 0) return;           // ganz unten: nichts mehr zu tun
+    if (!e.deltaY) return;
+    e.preventDefault();
+    const now = performance.now(), idle = now - lastWheel;
+    lastWheel = now;
+    if (now < lockUntil || idle < 110) return;                              // Nachlauf/Trägheit derselben Geste ignorieren
+    let i = 0;
+    stops.forEach((p, k) => { if (Math.abs(p - y) < Math.abs(stops[i] - y)) i = k; });
+    const j = Math.min(stops.length - 1, Math.max(0, i + (e.deltaY > 0 ? 1 : -1)));
+    if (j === i && Math.abs(stops[i] - y) < 3) return;
+    lockUntil = now + 800;
+    window.scrollTo({ top: stops[j], behavior: REDUCED ? 'auto' : 'smooth' });
+  }, { passive: false });
+
   let swapping = false;
   async function switchRegion(next) {
     if (swapping || !DATA || !DATA[next] || next === R) return;
@@ -577,10 +642,26 @@
       renderRegion(true, 150);
       document.body.classList.remove('region-swap');
     } finally { swapping = false; }
+    onScrollRegions();                                         // falls inzwischen weitergescrollt wurde
   }
 
-  regionItems.forEach(it => it.addEventListener('click', () => switchRegion(it.dataset.region)));
-  window.addEventListener('hashchange', () => { const h = location.hash.slice(1); if (REGIONS[h]) switchRegion(h); });
+  regionItems.forEach(it => it.addEventListener('click', async () => {
+    const name = it.dataset.region;
+    if (scrollMode() && !viz.classList.contains('is-open')) {
+      holdRegionScroll();
+      window.scrollTo({ top: posOf(name), behavior: REDUCED ? 'auto' : 'smooth' });
+      switchRegion(name);
+    } else {
+      await switchRegion(name);
+      if (scrollMode()) window.scrollTo({ top: posOf(R), behavior: 'auto' });
+    }
+  }));
+  window.addEventListener('hashchange', () => {
+    const h = location.hash.slice(1);
+    if (!REGIONS[h]) return;
+    if (scrollMode() && !viz.classList.contains('is-open')) window.scrollTo({ top: posOf(h), behavior: 'smooth' });
+    else switchRegion(h);
+  });
 
   async function init() {
     statusMode = 'loading';
@@ -597,6 +678,7 @@
     if (REGIONS[h] && DATA[h]) R = h;
     regionItems.forEach(it => { it.disabled = !DATA[it.dataset.region]; it.hidden = !DATA[it.dataset.region]; });
     statusMode = 'ready';
+    setupScrollMode();
     renderRegion(true);
     slots.forEach(s => { s.btn.disabled = false; });
   }
@@ -1132,6 +1214,7 @@
         await wait(40);
         stage.classList.remove('is-switching');
       } else {
+        document.documentElement.classList.add('viz-open');   // freies Scrollen, solange die Visualisierung offen ist
         viz.hidden = false;
         activeMode = mode; updateButtons();
         V.hold = true;                            // noch nichts zeichnen, bis das Panel fertig offen ist
@@ -1158,7 +1241,9 @@
       V.mode = null;
       cancelAnimationFrame(V.zraf); V.zraf = 0;
       if (V.raf) { cancelAnimationFrame(V.raf); V.raf = 0; }
-      window.scrollTo({ top: 0, behavior: REDUCED ? 'auto' : 'smooth' });
+      document.documentElement.classList.remove('viz-open');
+      holdRegionScroll();
+      window.scrollTo({ top: scrollMode() ? posOf(R) : 0, behavior: REDUCED ? 'auto' : 'smooth' });
     } finally { busy = false; }
   }
 

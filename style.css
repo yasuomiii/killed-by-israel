@@ -136,6 +136,23 @@ a:hover { text-decoration-color: var(--ink); }
   .regions__item.is-active .regions__line { width: 32px; opacity: 1; }
 }
 
+/* Scroll-Modus (nur breite Bildschirme): Der Hero bleibt stehen, Scrollen wechselt die Region.
+   Abschalten: SCROLL_REGIONS = false in script.js */
+:root { --step: 70svh; }
+.hero-track { position: relative; }
+.hero-track__snap { display: none; }
+.scroll-regions { scroll-snap-type: y proximity; }
+.scroll-regions .hero-track { height: calc(100svh + var(--steps, 2) * var(--step)); }
+.scroll-regions .hero { position: sticky; top: 0; height: 100svh; min-height: 0; }
+.scroll-regions .hero-track__snap {
+  display: block; position: absolute; left: 0; width: 1px; height: 1px;
+  top: calc(var(--i) * var(--step)); scroll-snap-align: start; pointer-events: none;
+}
+.scroll-regions .hero-track__snap[hidden] { display: none; }
+.scroll-regions .lang { position: fixed; }
+/* Zweiter Scroll-Schritt: Quellen bleiben an gewohnter Stelle am Seitenende; ein eigener Scroll-Schritt führt dorthin */
+.scroll-regions .footer { scroll-snap-align: end; }
+
 /* ───────── Hauptkennzahlen ───────── */
 .stats {
   width: min(1100px, 100%);
